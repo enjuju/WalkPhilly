@@ -1,4 +1,4 @@
-# Brewery Finder website
+# WalkPhilly Mobile Web App
 
 ---
 <div align="center">
