@@ -24,7 +24,7 @@
     <td align="center"><a href="https://github.com/enjuju"><img src="https://avatars.githubusercontent.com/u/105042739?v=4" width="100px;" alt=""/><br /><sub><b>Patricia Kamlley</b></sub></a></td>
     <td align="center"><a href="https://github.com/D-Duque"><img src="https://avatars.githubusercontent.com/u/117413139?v=4" width="100px;" alt=""/><br /><sub><b>Daniel Duque</b></sub></a></td>
     <td align="center"><a href="https://github.com/honglebs"><img src="https://avatars.githubusercontent.com/u/101665760?v=4" width="100px;" alt=""/><br /><sub><b>Hong Le</b></sub></a></td>
-    <td align="center"><a href="https://github.com/emmascode"><img src="https://avatars.githubusercontent.com/u/117713421?v=4" width="100px;" alt=""/><br /><sub><b>John Mullen</b></sub></a></td>
+    <td align="center"><a href="https://github.com/emmascode"><img src="https://avatars.githubusercontent.com/u/117713421?v=4" width="100px;" alt=""/><br /><sub><b>Emma Nguyen</b></sub></a></td>
   </tr>
 </table>
 
