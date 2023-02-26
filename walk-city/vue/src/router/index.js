@@ -9,6 +9,7 @@ import LocationList from "../views/LocationList.vue";
 import LocationDetails from "../views/LocationDetails.vue";
 import History from "../views/History.vue"
 import AboutUs from "../views/AboutUs.vue"
+import MapBoxView from "../views/MapBoxView"
 
 Vue.use(Router);
 
@@ -85,6 +86,14 @@ const router = new Router({
       path: '/team-llama-drama',
       name: "about-us",
       component: AboutUs,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/mapbox/',
+      name: "map-box-view",
+      component: MapBoxView,
       meta: {
         requiresAuth: false
       }
