@@ -39,13 +39,14 @@ git clone https://github.com/enjuju/WalkPhilly.git
 # Note on Google API:
 
 This code has taken out now-deactivated Google API keys.  In order to run this application fully you must modify
+```
 walk-city/java/src/main/java/com/techelevator/controller/GoogleApiController.java
 line 21 
-
+```
 and
-
+```
 walk-city/vue/.env variable VUE_APP_GOOGLE_API_KEY
-
+```
 to include your personal Google API key.
 
 
