@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.model.PlacesSearchResponse;
 import com.techelevator.services.PhotosService;
 import com.techelevator.services.PlacesService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,8 @@ public class GoogleApiController {
     private PhotosService photosService;
     private PlacesService placesService;
 
-    private static final String API_KEY = "";
+    @Value("${API_KEY}")
+    private String API_KEY;
 
     public GoogleApiController() {
         this.photosService = new PhotosService();
