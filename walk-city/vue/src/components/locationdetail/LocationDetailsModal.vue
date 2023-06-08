@@ -3,7 +3,7 @@
     <div id="location-card">
       <h2 id="location-name">{{ location.name }}</h2>
       <div class="cool-line"></div>
-      <img id="location-image" :src="`http://walk-philly.fly.dev/api/photos/Philadelphia ${location.name}`" alt="" />
+      <img id="location-image" :src="`https://walk-philly.fly.dev/api/photos/Philadelphia ${location.name}`" alt="" />
       <div id="location-description">
         <p id="description">{{ location.description }}</p>
         <p id="availability">{{ location.availability }}</p>

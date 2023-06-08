@@ -27,7 +27,7 @@
 
             <div id="location-address">{{ m.address }}</div>
 
-            <img id="location-img" :src="`http://walk-philly.fly.dev/api/photos/Philadelphia ${m.name}`" alt="" />
+            <img id="location-img" :src="`https://walk-philly.fly.dev/api/photos/Philadelphia ${m.name}`" alt="" />
             <div id="location-buttons">
               <div id="directions">
                 <div class="dropdown-container">

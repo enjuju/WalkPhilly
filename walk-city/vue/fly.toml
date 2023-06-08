@@ -1,0 +1,17 @@
+# fly.toml app configuration file generated for lets-walk-philly on 2023-06-08T14:35:53-07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "lets-walk-philly"
+primary_region = "sjc"
+
+[build]
+  image = "enjuju/walk-philly-secrets-3"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
