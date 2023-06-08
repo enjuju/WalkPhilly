@@ -2,8 +2,8 @@
   <div id="login" class="text-left">
     <form class="form-signin" @submit.prevent="login">
       <h1 class="mb-3 font-weight-bold text-center">WalkPhilly</h1>
-      <router-link :to="{name: 'about-us'}">
-      <img src="../assets/llama.png">
+      <router-link :to="{ name: 'about-us' }">
+        <img src="../assets/llama.png">
       </router-link>
       <div class="welcome-message text-center ">
         <p>Let's go for a walk.</p>
@@ -21,9 +21,9 @@
           required />
       </div>
       <div class="button-container text-center">
-        <div><router-link :to="{ name: 'register' }">Need an account?</router-link> </div>
+        <div><router-link :to="{ name: 'register-view' }">Need an account?</router-link> </div>
         <div><button type="submit" class="btn-midnight-green">LOGIN</button></div>
-        <div><router-link :to="{ name: 'home' }"><button class="btn-midnight-green">GUEST MODE</button></router-link>
+        <div><router-link :to="{ name: 'home-view' }"><button class="btn-midnight-green">GUEST MODE</button></router-link>
         </div>
       </div>
     </form>
@@ -34,7 +34,7 @@
 import authService from "../services/AuthService";
 
 export default {
-  name: "login",
+  name: "login-view",
   components: {},
   data() {
     return {

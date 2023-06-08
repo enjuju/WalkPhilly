@@ -1,12 +1,9 @@
 <template>
   <div>
-    <div class="history" >
+    <div class="history">
       <div class="history-card" @click="openLocationDetails">
         <div id="overlay">
-          <img
-            class="absolute"
-            :src="require(`../assets/${categoryImage}.png`)"
-          />
+          <img class="absolute" :src="require(`../assets/${categoryImage}.png`)" />
         </div>
         <div id="text-container">
           <div id="please-work">
@@ -24,31 +21,23 @@
         </div>
       </div>
     </div>
-    <b-modal
-    :id="`location-details-modal-` + entry.locationId"
-    centered
-    hide-header
-    hide-footer
-  >
-    <div id="location-card">
-      <h2 id="location-name">{{ locationObject.locationName }}</h2>
-      <div class="cool-line"></div>
-      <img
-        id="location-image"
-        :src="`http://localhost:8080/api/photos/Philadelphia ${locationObject.locationName}`"
-        alt=""
-      />
-      <div id="location-description">
-        <p id="description">{{ locationObject.description }}</p>
-        <p id="availability">{{ locationObject.availability }}</p>
-        <p>
-          <a v-bind:href="locationObject.social" target="_blank">{{
-            locationObject.social
-          }}</a>
-        </p>
+    <b-modal :id="`location-details-modal-` + entry.locationId" centered hide-header hide-footer>
+      <div id="location-card">
+        <h2 id="location-name">{{ locationObject.locationName }}</h2>
+        <div class="cool-line"></div>
+        <img id="location-image" :src="`http://walk-philly.fly.dev/api/photos/Philadelphia ${locationObject.locationName}`"
+          alt="" />
+        <div id="location-description">
+          <p id="description">{{ locationObject.description }}</p>
+          <p id="availability">{{ locationObject.availability }}</p>
+          <p>
+            <a v-bind:href="locationObject.social" target="_blank">{{
+              locationObject.social
+            }}</a>
+          </p>
+        </div>
       </div>
-    </div>
-  </b-modal>
+    </b-modal>
   </div>
 </template>
 <script>
@@ -56,7 +45,7 @@ import locationService from "../services/LocationService";
 import restaurantIcon from "../assets/restaurant-icon.png";
 export default {
   components: {
-    
+
   },
   data() {
     return {
@@ -151,6 +140,5 @@ img.absolute {
   margin-bottom: -30px;
 }
 
-#overlay {
-}
+#overlay {}
 </style>

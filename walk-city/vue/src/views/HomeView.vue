@@ -1,90 +1,55 @@
 <template>
   <div class="home">
-    <GmapMap
-      :center="userPos"
-      :zoom="15"
-      :options="{
-        zoomControl: false,
-        mapTypeControl: false,
-        scaleControl: false,
-        streetViewControl: false,
-        rotateControl: false,
-        fullscreenControl: false,
-        disableDefaultUi: false,
-        mapId: '5bad73ddd2112653'
-      }"
-      map-type-id="roadmap"
-      style="width: 100vw; height: 93vh"
-      @click="closeMenuView"
-    >
-      <GmapMarker
-        :key="index"
-        v-for="(m, index) in $store.state.filteredMarkers"
-        :ref="`marker${index}`"
-        :position="m.position"
-        :icon="
+    <GmapMap :center="userPos" :zoom="15" :options="{
+      zoomControl: false,
+      mapTypeControl: false,
+      scaleControl: false,
+      streetViewControl: false,
+      rotateControl: false,
+      fullscreenControl: false,
+      disableDefaultUi: false,
+      mapId: '5bad73ddd2112653'
+    }" map-type-id="roadmap" style="width: 100vw; height: 93vh" @click="closeMenuView">
+      <GmapMarker :key="index" v-for="(m, index) in $store.state.filteredMarkers" :ref="`marker${index}`"
+        :position="m.position" :icon="
           `http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=${index +
-            1}|FF0000|FFFFFF`
-        "
-        :clickable="true"
-        :draggable="false"
-        @click="openMarker(index)"
-      >
-        <GmapInfoWindow
-          class="info-window"
-          :closeclick="true"
-          @closeclick="openMarker(null)"
-          :opened="openMarkerId === index"
-        >
-          <div id="body" >
+          1}|FF0000|FFFFFF`
+        " :clickable="true" :draggable="false" @click="openMarker(index)">
+        <GmapInfoWindow class="info-window" :closeclick="true" @closeclick="openMarker(null)"
+          :opened="openMarkerId === index">
+          <div id="body">
             <!-- <router-link
               :to="{ name: 'location-details', params: { id: m.id } }"
             > -->
             <location-details-modal :location="m"></location-details-modal>
-              <div id="location-name" @click="openLocationDetails(m.id)">{{ m.name }}</div>
+            <div id="location-name" @click="openLocationDetails(m.id)">{{ m.name }}</div>
             <!-- </router-link> -->
 
             <div id="location-address">{{ m.address }}</div>
 
-            <img
-              id="location-img"
-              :src="`http://localhost:8080/api/photos/Philadelphia ${m.name}`"
-              alt=""
-            />
+            <img id="location-img" :src="`http://walk-philly.fly.dev/api/photos/Philadelphia ${m.name}`" alt="" />
             <div id="location-buttons">
               <div id="directions">
                 <div class="dropdown-container">
-                  <b-form-select
-                    v-model="travelMode"
-                    :options="options"
-                    @change="setTravelMode"
-                  ></b-form-select>
+                  <b-form-select v-model="travelMode" :options="options" @change="setTravelMode"></b-form-select>
                 </div>
-                <button
-                  class="btn-midnight-green"
-                  :class="{ active: isDirectionsShowing }"
-                  @click="showDirections(m.position)"
-                >
+                <button class="btn-midnight-green" :class="{ active: isDirectionsShowing }"
+                  @click="showDirections(m.position)">
                   DIRECTIONS
                 </button>
               </div>
-              <button
-                class="btn-midnight-green"
-                @click="
-                  checkIn(
-                    {
-                      userId: $store.state.user.id,
-                      locationId: m.id,
-                      isCheckedIn: true
-                    },
-                    m.position,
-                    m.category
-                  )
-                "
-                :disabled="m.isCheckedIn && isLoggedIn"
-                :class="{ guest: !isLoggedIn}"
-              >
-                {{ m.isCheckedIn && isLoggedIn? "CHECKED-IN" : "CHECK-IN" }}
+              <button class="btn-midnight-green" @click="
+                checkIn(
+                  {
+                    userId: $store.state.user.id,
+                    locationId: m.id,
+                    isCheckedIn: true
+                  },
+                  m.position,
+                  m.category
+                )
+              " :disabled="m.isCheckedIn && isLoggedIn" :class="{ guest: !isLoggedIn }">
+                {{ m.isCheckedIn && isLoggedIn ? "CHECKED-IN" : "CHECK-IN" }}
               </button>
 
               <!-- <div>
@@ -96,39 +61,21 @@
                 </b-button>
               </div> -->
 
-              <div
-                id="check-in-far"
-                class="alert alert-danger"
-                role="alert"
-                v-show="m.isTooFar && !isHidden && isLoggedIn"
-                @click="hideAlert"
-              >
+              <div id="check-in-far" class="alert alert-danger" role="alert"
+                v-show="m.isTooFar && !isHidden && isLoggedIn" @click="hideAlert">
                 You're too far from this location!
                 <span href="#" id="close">&times;</span>
               </div>
-              <div
-                id="not-logged-in"
-                class="alert alert-danger"
-                role="alert"
-                v-show="!isLoggedIn"
-                @click="hideAlert"
-              >
+              <div id="not-logged-in" class="alert alert-danger" role="alert" v-show="!isLoggedIn" @click="hideAlert">
                 You need to be logged in to use this feature.
-                  
+
               </div>
             </div>
           </div>
         </GmapInfoWindow>
       </GmapMarker>
-      <GmapMarker
-        :position="this.$store.state.userPos"
-        :icon="require('../assets/user-location_50-1.png')"
-      ></GmapMarker>
-      <DirectionsRenderer
-        :travelMode="travelMode"
-        :origin="startLocation"
-        :destination="endLocation"
-      />
+      <GmapMarker :position="this.$store.state.userPos" :icon="require('../assets/user-location_50-1.png')"></GmapMarker>
+      <DirectionsRenderer :travelMode="travelMode" :origin="startLocation" :destination="endLocation" />
     </GmapMap>
     <new-badge-modal></new-badge-modal>
     <filter-results></filter-results>
@@ -151,14 +98,14 @@ import NewBadgeModal from "../components/NewBadgeModal.vue";
 import LocationDetailsModal from "../components/locationdetail/LocationDetailsModal.vue"
 
 export default {
-  name: "home",
+  name: "home-view",
   methods: {
     closeMenuView() {
       if (this.$store.state.isMenuViewShowing) {
         this.$store.commit("MENU_TOGGLE");
       }
     },
-    geolocate: function() {
+    geolocate: function () {
       navigator.geolocation.getCurrentPosition(position => {
         this.userPos = {
           lat: position.coords.latitude,
@@ -185,22 +132,22 @@ export default {
     toggleDirections() {
       const dir = this.$route.query.dir;
       if (dir == "true" || dir == true) {
-        this.$router.push({ name: "home", query: { dir: false } });
+        this.$router.push({ name: "home-view", query: { dir: false } });
       } else {
-        this.$router.push({ name: "home", query: { dir: true } });
+        this.$router.push({ name: "home-view", query: { dir: true } });
       }
       this.isDirectionsShowing = !dir;
     },
     checkIn(checkIn, locationPos, category) {
-       
+
       // check if user is within location range
       if (this.isLoggedIn && this.checkUserDistance(locationPos, category)) {
         CheckInService.createCheckin(checkIn).then(response => {
           if (response.status === 200 || response.status === 201) {
             // success code here
             this.$store.commit("CHECK_IN", checkIn.locationId);
-     
-          } 
+
+          }
           if (response.data === true) {
             console.log("Nice, new badge.");
             this.$bvModal.show("new-badge-modal");
@@ -238,7 +185,7 @@ export default {
     hideAlert() {
       this.isHidden = !this.isHidden;
     },
-    openLocationDetails(id){
+    openLocationDetails(id) {
       this.$bvModal.show("location-details-modal-" + id);
     }
   },
@@ -352,11 +299,13 @@ button.active {
   background-color: rgb(0, 73, 83);
   color: white;
 }
+
 button:disabled {
   background-color: rgb(0, 73, 83);
   color: white;
- 
+
 }
+
 button.guest {
   opacity: 50%
 }
