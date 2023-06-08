@@ -22,7 +22,7 @@
       </div>
 
       <div class="button-container text-center">
-        <div><router-link :to="{ name: 'login' }">Have an account?</router-link> </div>
+        <div><router-link :to="{ name: 'login-view' }">Have an account?</router-link> </div>
         <div><button class="btn-midnight-green" type="submit"> CREATE ACCOUNT </button> </div>
       </div>
     </form>
@@ -33,7 +33,7 @@
 import authService from '../services/AuthService';
 
 export default {
-  name: 'register',
+  name: 'register-view',
   data() {
     return {
       user: {
@@ -81,27 +81,31 @@ export default {
 
 <style scoped>
 #app {
-  display: grid;  
+  display: grid;
   font-weight: bold;
   justify-content: center;
   padding: 20px;
 }
+
 #register {
   background-image: url("../assets/philadelphia-aerial-view.jpg") !important;
   background-size: cover;
   height: 100vh;
   font-weight: bold;
- 
+
   background-repeat: no-repeat;
 }
+
 @media (max-width: 800px) {
   #register {
-     background-position: -460px;
-  }  
+    background-position: -460px;
+  }
 }
+
 h1 {
   font-size: 48px !important;
 }
+
 img {
   width: 240px;
   position: relative;
@@ -111,20 +115,24 @@ img {
 .user-credentials {
   margin-top: 40px;
 }
-.form-control{
+
+.form-control {
   align-self: center;
   margin-top: 20px;
   max-width: 20rem;
 }
+
 .form-register {
   margin: 30px 20px;
 }
+
 .button-container {
   display: flex;
   margin-top: 20px;
 }
+
 .register-message {
   font-weight: normal;
-  font-size: 1.5em 
+  font-size: 1.5em
 }
 </style>

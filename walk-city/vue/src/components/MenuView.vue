@@ -15,7 +15,7 @@
 
     <div class="cool-line" v-show="$store.state.token != ''"></div>
 
-    <router-link :to="{ name: 'history' }" v-if="$store.state.token != ''">
+    <router-link :to="{ name: 'history-view' }" v-if="$store.state.token != ''">
       <div id="view-history" @click="menuToggle">
         {{ $store.state.token != "" ? "VIEW CHECK-INS" : " " }}
       </div>
@@ -25,8 +25,8 @@
     <div id="username">
       {{
         $store.state.token != ""
-          ? $store.state.user.username.toUpperCase()
-          : "GUEST"
+        ? $store.state.user.username.toUpperCase()
+        : "GUEST"
       }}
     </div>
     <div id="home-and-logout">
@@ -38,7 +38,7 @@
         LOG OUT
       </button>
 
-      <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">
+      <router-link v-bind:to="{ name: 'login-view' }" v-if="$store.state.token == ''">
         <button class="btn-midnight-green" id="log-out" @click="menuToggleAndResetFilters">
           LOG IN
         </button>

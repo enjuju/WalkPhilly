@@ -6,13 +6,8 @@
         <h3>{{ location.name }}</h3>
 
         <h4>{{ location.category }}</h4>
-        <img
-          id="location-image"
-          :src="
-            `http://localhost:8080/api/photos/Philadelphia ${location.name}`
-          "
-          alt=""
-        />
+        <img id="location-image"
+          :src="`http://walk-philly.fly.dev/api/photos/Philadelphia ${locationObject.locationName}`" alt="" />
         <p id="address">{{ location.address }}</p>
       </div>
       <a id="website" v-bind:href="location.social" target="_blank">{{
@@ -26,17 +21,17 @@
 
 <script>
 import LocationDetailsModal from "../components/locationdetail/LocationDetailsModal.vue"
-export default{
-  components: {LocationDetailsModal},
+export default {
+  components: { LocationDetailsModal },
   name: "location-display",
   props: ["location"],
   methods: {
-    openLocationDetails(id){
+    openLocationDetails(id) {
       this.$bvModal.show("location-details-modal-" + id);
     }
   },
   computed: {},
-  
+
 };
 </script>
 

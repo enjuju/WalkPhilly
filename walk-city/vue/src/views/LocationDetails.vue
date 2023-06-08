@@ -3,29 +3,20 @@
     <div id="location-card">
       <h2 id="location-name">{{ location.locationName }}</h2>
       <div class="cooler-line"></div>
-      <img
-        id="location-image"
-        :src="`http://localhost:8080/api/photos/Philadelphia ${location.locationName}`"
-        alt=""
-      />
+      <img id="location-image" :src="`http://walk-philly.fly.dev/api/photos/Philadelphia ${locationObject.locationName}`"
+        alt="" />
       <div id="location-buttons">
-        <button
-          class="btn-darker-midnight-green"
-          @click="
-            checkIn({
-              userId: $store.state.user.id,
-              locationId: location.locationId
-            })
-          "
-        >
+        <button class="btn-darker-midnight-green" @click="
+          checkIn({
+            userId: $store.state.user.id,
+            locationId: location.locationId
+          })
+        ">
           CHECK-IN
         </button>
-        <button
-          class="btn-darker-midnight-green"
-          @click.prevent="
-            setLocation({ lat: location.latitude, lng: location.longitude })
-          "
-        >
+        <button class="btn-darker-midnight-green" @click.prevent="
+          setLocation({ lat: location.latitude, lng: location.longitude })
+        ">
           DIRECTIONS
         </button>
       </div>
@@ -70,7 +61,7 @@ export default {
       this.$router.back(1);
     },
     setLocation(location) {
-      this.$router.push({ name: "home", query: { dir: true } });
+      this.$router.push({ name: "home-view", query: { dir: true } });
       this.$store.commit("SET_END_LOCATION", location);
     },
     checkIn(checkIn) {

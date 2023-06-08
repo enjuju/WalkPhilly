@@ -1,13 +1,13 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "../views/Home.vue";
-import Login from "../views/Login.vue";
-import Logout from "../views/Logout.vue";
-import Register from "../views/Register.vue";
+import HomeView from "../views/HomeView.vue";
+import LoginView from "../views/LoginView.vue";
+import LogoutView from "../views/LogoutView.vue";
+import RegisterView from "../views/RegisterView.vue";
 import store from "../store/index";
 import LocationList from "../views/LocationList.vue";
 import LocationDetails from "../views/LocationDetails.vue";
-import History from "../views/History.vue"
+import HistoryView from "../views/HistoryView.vue"
 import AboutUs from "../views/AboutUs.vue"
 import MapBoxView from "../views/MapBoxView"
 
@@ -28,32 +28,32 @@ const router = new Router({
   routes: [
     {
       path: "/",
-      name: "home",
-      component: Home,
+      name: "home-view",
+      component: HomeView,
       meta: {
         requiresAuth: false
       }
     },
     {
       path: "/login",
-      name: "login",
-      component: Login,
+      name: "login-view",
+      component: LoginView,
       meta: {
         requiresAuth: false
       }
     },
     {
       path: "/logout",
-      name: "logout",
-      component: Logout,
+      name: "logout-view",
+      component: LogoutView,
       meta: {
         requiresAuth: false
       }
     },
     {
       path: "/register",
-      name: "register",
-      component: Register,
+      name: "register-view",
+      component: RegisterView,
       meta: {
         requiresAuth: false
       }
@@ -75,9 +75,9 @@ const router = new Router({
       }
     },
     {
-      path: "/history",
-      name: "history",
-      component: History,
+      path: "/history-view",
+      name: "history-view",
+      component: HistoryView,
       meta: {
         requiresAuth: true
       }  
