@@ -12,7 +12,7 @@
     }" map-type-id="roadmap" style="width: 100vw; height: 93vh" @click="closeMenuView">
       <GmapMarker :key="index" v-for="(m, index) in $store.state.filteredMarkers" :ref="`marker${index}`"
         :position="m.position" :icon="
-          `http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=${index +
+          `https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=${index +
           1}|FF0000|FFFFFF`
         " :clickable="true" :draggable="false" @click="openMarker(index)">
         <GmapInfoWindow class="info-window" :closeclick="true" @closeclick="openMarker(null)"
