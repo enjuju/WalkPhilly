@@ -1,12 +1,15 @@
 FROM node:16
 
+#install new stuff
+
+#RUN npm i @babel/eslint-parser
+#RUN npm install eslint @babel/core @babel/eslint-parser --save-dev
+
 # install simple http server for serving static content
 
 RUN npm install -g http-server
 
-#install new stuff
-RUN npm i @babel/eslint-parser
-RUN npm install @babel/eslint-plugin --save-dev
+
 
 # make the 'app' folder the current working directory
 
