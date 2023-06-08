@@ -26,7 +26,7 @@
         <h2 id="location-name">{{ locationObject.locationName }}</h2>
         <div class="cool-line"></div>
         <img id="location-image"
-          :src="`http://walk-philly.fly.dev/api/photos/Philadelphia ${locationObject.locationName}`" alt="" />
+          :src="`https://walk-philly.fly.dev/api/photos/Philadelphia ${locationObject.locationName}`" alt="" />
         <div id="location-description">
           <p id="description">{{ locationObject.description }}</p>
           <p id="availability">{{ locationObject.availability }}</p>
