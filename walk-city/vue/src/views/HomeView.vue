@@ -62,11 +62,10 @@
               </div> -->
 
               <div id="check-in-far" class="alert alert-danger" role="alert"
-                v-show="m.isTooFar && !isHidden && isLoggedIn" @click="hideAlert">
+                v-show="m.isTooFar && !isHidden && isLoggedIn" @click="hideAlert && toggleTooFar(m.id)">
                 You're too far from this location!
-                <span href="#" id="close">&times;</span>
               </div>
-              <div id="not-logged-in" class="alert alert-danger" role="alert" v-show="!isLoggedIn" @click="hideAlert">
+              <div id="not-logged-in" class="alert alert-danger" role="alert" v-show="!isLoggedIn">
                 You need to be logged in to use this feature.
 
               </div>
@@ -185,6 +184,9 @@ export default {
     hideAlert() {
       this.isHidden = !this.isHidden;
     },
+    toggleTooFar(locationId) {
+      this.$store.commit("SET_IS_NOT_TOO_FAR", locationId)
+    },
     openLocationDetails(id) {
       this.$bvModal.show("location-details-modal-" + id);
     }
@@ -235,11 +237,13 @@ export default {
     CheckInService.getAllCheckIns().then(response => {
       this.$store.commit("SET_CHECK_IN_STATUS", response.data);
     });
-    badgesServices
-      .getBadgesByUserId(this.$store.state.user.id)
-      .then(response => {
-        this.$store.commit("SET_USER_BADGE_LIST", response.data);
-      });
+    if (this.$store.state.user.id != undefined) {
+      badgesServices
+        .getBadgesByUserId(this.$store.state.user.id)
+        .then(response => {
+          this.$store.commit("SET_USER_BADGE_LIST", response.data);
+        });
+    }
   },
   computed: {
     getUserPos() {
