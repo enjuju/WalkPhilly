@@ -144,6 +144,12 @@ export default new Vuex.Store({
       })[0];
       location.isTooFar = true;
     },
+    SET_IS_NOT_TOO_FAR(state, locationId){
+      const location = state.filteredMarkers.filter(location => {
+        return location.id == locationId;
+      })[0];
+      location.isTooFar = false;
+    },
     SET_USER_BADGE_LIST(state, userBadgeList) {
       state.userBadgeList = userBadgeList
     }
