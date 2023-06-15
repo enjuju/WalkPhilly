@@ -235,11 +235,13 @@ export default {
     CheckInService.getAllCheckIns().then(response => {
       this.$store.commit("SET_CHECK_IN_STATUS", response.data);
     });
-    badgesServices
-      .getBadgesByUserId(this.$store.state.user.id)
-      .then(response => {
-        this.$store.commit("SET_USER_BADGE_LIST", response.data);
-      });
+    if (this.$store.state.user.id != undefined) {
+      badgesServices
+        .getBadgesByUserId(this.$store.state.user.id)
+        .then(response => {
+          this.$store.commit("SET_USER_BADGE_LIST", response.data);
+        });
+    }
   },
   computed: {
     getUserPos() {
