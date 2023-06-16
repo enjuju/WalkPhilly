@@ -234,9 +234,11 @@ export default {
       this.$store.commit("LOAD_NEARBY_LOCATIONS");
     });
     // set marker check-ins to API value
-    CheckInService.getAllCheckIns().then(response => {
-      this.$store.commit("SET_CHECK_IN_STATUS", response.data);
-    });
+    if (this.$store.state.user.id != undefined) {
+      CheckInService.getCheckInsByUserId(this.$store.state.user.id).then(response => {
+        this.$store.commit("SET_CHECK_IN_STATUS", response.data);
+      });
+    }
     if (this.$store.state.user.id != undefined) {
       badgesServices
         .getBadgesByUserId(this.$store.state.user.id)
