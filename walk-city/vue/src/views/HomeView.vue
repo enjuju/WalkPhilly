@@ -77,6 +77,7 @@
       <DirectionsRenderer :travelMode="travelMode" :origin="startLocation" :destination="endLocation" />
     </GmapMap>
     <new-badge-modal></new-badge-modal>
+    <Navigation-Modal></Navigation-Modal>
     <filter-results></filter-results>
     <menu-button v-show="$store.state.isMenuButtonShowing"></menu-button>
     <Transition name="slide">
@@ -95,6 +96,7 @@ import CheckInService from "../services/CheckInService";
 import badgesServices from "../services/BadgesService";
 import NewBadgeModal from "../components/NewBadgeModal.vue";
 import LocationDetailsModal from "../components/locationdetail/LocationDetailsModal.vue"
+import NavigationModal from "../components/NavigationModal.vue";
 
 export default {
   name: "home-view",
@@ -197,7 +199,8 @@ export default {
     FilterResults,
     DirectionsRenderer,
     NewBadgeModal,
-    LocationDetailsModal
+    LocationDetailsModal,
+    NavigationModal
   },
   data() {
     return {
@@ -226,6 +229,7 @@ export default {
   },
   mounted() {
     this.geolocate();
+    this.$bvModal.show("navigation-modal");
   },
   created() {
     // get data from API
