@@ -48,7 +48,7 @@ export default new Vuex.Store({
             description: location.description,
             availability: location.availability,
             social: location.socialMedia,
-            isCheckedIn: false,
+            isCheckedIn: false, 
             isTooFar: false
           };
         })
@@ -64,6 +64,9 @@ export default new Vuex.Store({
           return isLatNear && isLngNear;
         });
       return locations;
+    },
+    userPos(){
+      state => state.userPos;
     }
   },
   mutations: {

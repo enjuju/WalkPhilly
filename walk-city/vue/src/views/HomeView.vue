@@ -192,6 +192,28 @@ export default {
     openLocationDetails(id) {
       this.$bvModal.show("location-details-modal-" + id);
     },
+    checkUserInPhilly() {
+      const westBound = {
+        lat: 39.956078153793996,
+        lng: -75.23493383758311
+      };
+      const eastBound = {
+        lat: 39.94946676975911,
+        lng: -75.13745284626663
+      };
+      const southBound = {
+        lat: 39.89344477936112,
+        lng: -75.18622418125337
+      };
+      const northBound = {
+        lat: 40.01315814156502,
+        lng: -75.15764151728398
+      };
+      if (this.$store.state.userPos.lat < northBound.lat && this.$store.state.userPos.lat > southBound.lat && this.$store.state.userPos.lng < eastBound.lng && this.$store.state.userPos.lat > westBound.lng) {
+        this.isInPhilly = true;
+      }
+      else { this.isInPhilly = false; }
+    }
   },
   components: {
     MenuButton,
@@ -208,6 +230,7 @@ export default {
         lat: 0,
         lng: 0
       },
+      isInPhilly: null,
       openMarkerId: null,
       startLocation: this.$store.state.userPos,
       endLocation: this.$store.state.endLocation,
@@ -229,7 +252,12 @@ export default {
   },
   mounted() {
     // this.geolocate();
-    this.$bvModal.show("navigation-modal");
+
+    this.checkUserInPhilly();
+    if (!this.isInPhilly) {
+      this.$bvModal.show("navigation-modal");
+    }
+
   },
   created() {
     // get data from API
