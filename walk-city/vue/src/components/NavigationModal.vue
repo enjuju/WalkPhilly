@@ -17,11 +17,7 @@
 
 <script>
 export default {
-  methods: {
-    teleport() {
-      this.$store.commit("SET_USER_POSITION", this.userPos);
-    }
-  },
+
   data() {
     return {
       userPos: {
@@ -30,6 +26,16 @@ export default {
       }
     }
   },
+  methods: {
+    teleport() {
+      this.$store.commit("SET_USER_POSITION", this.userPos);
+      // if (this.$refs.googleMap) {
+      //   this.$refs.mapRef.$mapPromise.then((map) => {
+      //     map.panTo(this.userPos)
+      //   })
+      // }
+    }
+  }
 }
 </script>
 

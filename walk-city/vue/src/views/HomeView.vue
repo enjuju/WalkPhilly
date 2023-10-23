@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <GmapMap :center="userPos" :zoom="15" :options="{
+    <GmapMap :center="$store.state.userPos" :zoom="15" :options="{
       zoomControl: false,
       mapTypeControl: false,
       scaleControl: false,

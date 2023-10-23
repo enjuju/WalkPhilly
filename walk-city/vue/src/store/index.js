@@ -152,6 +152,10 @@ export default new Vuex.Store({
     },
     SET_USER_BADGE_LIST(state, userBadgeList) {
       state.userBadgeList = userBadgeList
+    },
+    PAN_TO_USER_POSITION(state){
+      this.$refs.mapRef.$mapPromise.then((map) => { map.panTo(state.userPos) }
+      )
     }
   }
 });
