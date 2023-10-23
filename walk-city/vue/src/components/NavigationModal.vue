@@ -1,6 +1,6 @@
 <template>
   <div class="navigation-modal-container">
-    <b-modal id="navigation-modal" hide-footer hide-header centered text-center>
+    <b-modal id="navigation-modal" hide-footer hide-header centered text-center no-close-on-backdrop no-close-on-esc>
 
       <div id="navigation-modal-details">
         <h2>Welcome!</h2>
@@ -9,13 +9,15 @@
           <img src="../assets/llamawhite.png">
         </div>
         <h6 id="navigation-desc">This application requires you to be in Philadelphia.</h6>
-        <button class="btn-darker-midnight-green" @click="teleport">TELEPORT ME</button>
+        <button class="btn-darker-midnight-green" @click="teleport(), reloadLocations(), closeModal()">TELEPORT
+          ME</button>
       </div>
     </b-modal>
   </div>
 </template>
 
 <script>
+import LocationService from '../services/LocationService';
 export default {
 
   data() {
@@ -34,6 +36,15 @@ export default {
       //     map.panTo(this.userPos)
       //   })
       // }
+    },
+    reloadLocations() {
+      LocationService.getAllLocations().then(response => {
+        this.$store.commit("LOAD_LOCATIONS", response.data);
+        this.$store.commit("LOAD_NEARBY_LOCATIONS");
+      })
+    },
+    closeModal() {
+      this.$bvModal.hide('navigation-modal');
     }
   }
 }

@@ -106,15 +106,15 @@ export default {
         this.$store.commit("MENU_TOGGLE");
       }
     },
-    geolocate: function () {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.userPos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-        this.$store.commit("SET_USER_POSITION", this.userPos);
-      });
-    },
+    // geolocate: function () {
+    //   navigator.geolocation.getCurrentPosition(position => {
+    //     this.userPos = {
+    //       lat: position.coords.latitude,
+    //       lng: position.coords.longitude
+    //     };
+    //     this.$store.commit("SET_USER_POSITION", this.userPos);
+    //   });
+    //},
     openMarker(id) {
       this.openMarkerId = id;
       this.isCheckedIn = false;
@@ -191,7 +191,7 @@ export default {
     },
     openLocationDetails(id) {
       this.$bvModal.show("location-details-modal-" + id);
-    }
+    },
   },
   components: {
     MenuButton,
@@ -228,7 +228,7 @@ export default {
     };
   },
   mounted() {
-    this.geolocate();
+    // this.geolocate();
     this.$bvModal.show("navigation-modal");
   },
   created() {
