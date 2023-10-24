@@ -97,6 +97,8 @@ import badgesServices from "../services/BadgesService";
 import NewBadgeModal from "../components/NewBadgeModal.vue";
 import LocationDetailsModal from "../components/locationdetail/LocationDetailsModal.vue"
 import NavigationModal from "../components/NavigationModal.vue";
+import { mapGetters } from "vuex";
+
 
 export default {
   name: "home-view",
@@ -193,27 +195,11 @@ export default {
       this.$bvModal.show("location-details-modal-" + id);
     },
     checkUserInPhilly() {
-      const westBound = {
-        lat: 39.956078153793996,
-        lng: -75.23493383758311
-      };
-      const eastBound = {
-        lat: 39.94946676975911,
-        lng: -75.13745284626663
-      };
-      const southBound = {
-        lat: 39.89344477936112,
-        lng: -75.18622418125337
-      };
-      const northBound = {
-        lat: 40.01315814156502,
-        lng: -75.15764151728398
-      };
-      if (this.$store.state.userPos.lat < northBound.lat && this.$store.state.userPos.lat > southBound.lat && this.$store.state.userPos.lng < eastBound.lng && this.$store.state.userPos.lat > westBound.lng) {
+      if (this.$store.state.userPos.lat == 39.95275472505483 && this.$store.state.userPos.lng == -75.1635208523996) {
         this.isInPhilly = true;
       }
       else { this.isInPhilly = false; }
-    }
+    },
   },
   components: {
     MenuButton,
@@ -226,10 +212,10 @@ export default {
   },
   data() {
     return {
-      userPos: {
-        lat: 0,
-        lng: 0
-      },
+      // userPos: {
+      //   lat: 0,
+      //   lng: 0
+      // },
       isInPhilly: null,
       openMarkerId: null,
       startLocation: this.$store.state.userPos,
@@ -252,7 +238,6 @@ export default {
   },
   mounted() {
     // this.geolocate();
-
     this.checkUserInPhilly();
     if (!this.isInPhilly) {
       this.$bvModal.show("navigation-modal");
@@ -280,11 +265,12 @@ export default {
     }
   },
   computed: {
-    getUserPos() {
-      return this.userPos;
+    ...mapGetters(['getUserPos']),
+    userPos() {
+      return this.getUserPos;
     }
   }
-};
+}
 </script>
 
 <style scoped>

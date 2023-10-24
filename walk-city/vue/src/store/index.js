@@ -65,10 +65,9 @@ export default new Vuex.Store({
         });
       return locations;
     },
-    userPos(){
-      state => state.userPos;
-    }
-  },
+    getUserPos:
+      state => state.userPos
+    },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
