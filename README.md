@@ -1,4 +1,4 @@
-# WalkPhilly Mobile Web App
+# WalkPhilly Travel Web Application
 
 ---
 <div align="center">
@@ -31,57 +31,7 @@
 
 ---
 
-# Install
+# A mobile-first design web tool to explore famous landmarks and points of interest in the city of Philadelphia
+Vue, Bootstrap, Jquery, Vue Google Maps, PostgreSql, Java, Spring Boot, RESTful API, Axios
 
-```
-git clone https://github.com/enjuju/WalkPhilly.git
-```
-# Note on Google API:
-
-This code has taken out now-deactivated Google API keys.  In order to run this application fully you must modify
-```
-walk-city/java/src/main/java/com/techelevator/controller/GoogleApiController.java
-line 21 
-```
-and
-```
-walk-city/vue/.env variable VUE_APP_GOOGLE_API_KEY
-```
-to include your personal Google API key.
-
-
-# Usage
-to run this script
-
-Inside the /database/ directory you will find an executable Bash script (.sh file)
-
-To run:
-```console
-cd <project-root>/database/ chmod u+r+x create_capstone-db.sh ./create_capstone-db.sh
-```
-above ^ works on MacOS
-
-using Ubuntu you can run this by doing a
-
-```sh
-sh ./create_capstone-db.sh
-```
-
-# After database population
-
-Start the java server
-
-```console
-cd <project-root>/application-server/
-javac application-server
-java application-server
-```
-
-# After server is started
-
-```console
-cd <project-root>/vue/
-npm install
-npm run serve
-```
-Now you can interact with this full stack application
+This website has been deployed! Check it out on the sidebar link. :)
