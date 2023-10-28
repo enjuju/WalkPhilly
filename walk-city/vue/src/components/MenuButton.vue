@@ -16,7 +16,7 @@ export default {
 </script>
 <style>
 #menu-button {
-    position: fixed;
+    position: relative;
     display: flex;
     bottom: 0px;
     background: #004953;

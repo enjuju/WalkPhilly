@@ -8,7 +8,8 @@
         <div id="image-badge">
           <img src="../assets/llamawhite.png">
         </div>
-        <h6 id="navigation-desc">This application requires you to be in Philadelphia.</h6>
+        <h6 id="navigation-desc">This application requires you to be in Philadelphia and is designed for mobile.
+        </h6>
         <button class="btn-darker-midnight-green" @click="teleport(), reloadLocations(), closeModal()">TELEPORT
           ME</button>
       </div>

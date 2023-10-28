@@ -83,7 +83,7 @@ export default {
 
 <style>
 #main-menu {
-  position: fixed;
+  position: absolute;
   display: flex;
   bottom: 0px;
   background: #004953;
@@ -118,7 +118,7 @@ export default {
 }
 
 #dropdown-container {
-  width: 100vw;
+  width: 100%;
   display: flex;
 }
 
