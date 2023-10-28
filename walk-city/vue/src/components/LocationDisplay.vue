@@ -6,7 +6,7 @@
         <h3>{{ location.name }}</h3>
 
         <h4>{{ location.category }}</h4>
-        <img id="location-image" :src="`https://walk-philly.fly.dev/api/photos/Philadelphia ${location.Name}`" alt="" />
+        <img id="location-image" :src="`https://walk-philly.fly.dev/api/photos/Philadelphia ${location.name}`" alt="" />
         <p id="address">{{ location.address }}</p>
       </div>
       <a id="website" v-bind:href="location.social" target="_blank">{{

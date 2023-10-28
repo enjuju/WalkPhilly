@@ -54,7 +54,7 @@ export default new Vuex.Store({
           };
         })
         .filter(location => {
-          const range = 0.01;
+          const range = 0.2;
           const isLatNear =
             location.position.lat - state.userPos.lat <= range &&
             location.position.lat - state.userPos.lat >= -range;
