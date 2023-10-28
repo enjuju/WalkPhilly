@@ -1,11 +1,8 @@
 <template>
-  <div>
+  <div id="location-container">
     <div class="locations">
-      <location-display
-        v-for="location in this.$store.state.filteredMarkers"
-        v-bind:key="location.id"
-        v-bind:location="location"
-      />
+      <location-display v-for="location in this.$store.state.filteredMarkers" v-bind:key="location.id"
+        v-bind:location="location" />
     </div>
     <div class="back-button">
       <router-link id="back-button" to="/">
@@ -23,10 +20,9 @@ export default {
   components: {
     LocationDisplay
   },
-  created(){
+  created() {
     // returns the user to the map view after refreshing list view
-    if(this.$store.state.filteredMarkers.length == 0)
-    {
+    if (this.$store.state.filteredMarkers.length == 0) {
       this.$router.push("/")
     }
   },
@@ -37,13 +33,18 @@ export default {
 <style scoped>
 .locations {
   margin: 0;
-  height: 90vh;
+  height: 90%;
   overflow: auto;
   border-radius: 6px;
 }
 
 .back-button {
+  position: sticky;
+  bottom: 1%;
+  left: 1%;
+}
+
+.location-container {
   position: relative;
-  top: 0.5rem;
 }
 </style>

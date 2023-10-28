@@ -92,18 +92,23 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   column-gap: 1rem;
   row-gap: 1rem;
+  overflow: auto;
 }
 
 .history-container {
   margin: 0;
-  height: 80vh;
+  height: 80%;
   overflow: auto;
   border-radius: 6px;
 }
 
 .back-button {
-  position: fixed;
-  bottom: 10px;
-  left: 0rem;
+  position: sticky;
+  bottom: 1%;
+  left: 1%;
+}
+
+.history-page {
+  position: relative;
 }
 </style>

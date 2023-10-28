@@ -68,7 +68,7 @@ div.location a:hover {
 }
 
 #location-image {
-  max-width: 70vw;
+  max-width: 80%;
 }
 
 #website {
