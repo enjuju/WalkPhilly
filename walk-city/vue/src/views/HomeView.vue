@@ -9,7 +9,7 @@
       fullscreenControl: false,
       disableDefaultUi: false,
       mapId: '5bad73ddd2112653'
-    }" map-type-id="roadmap" style="width: 100vw; height: 93vh" @click="closeMenuView">
+    }" map-type-id="roadmap" style="width: 100%; height: 93%" @click="closeMenuView">
       <GmapMarker :key="index" v-for="(m, index) in $store.state.filteredMarkers" :ref="`marker${index}`"
         :position="m.position" :icon="
           `https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=${index +
@@ -273,7 +273,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+.home {
+  height: 100%;
+}
+
 #location-name {
   font-weight: bold;
   color: rgb(0, 73, 83);

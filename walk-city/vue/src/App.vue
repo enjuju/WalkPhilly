@@ -1,16 +1,16 @@
 <template>
-  <div id="app">
-    <!-- <div id="nav">
+  <div id="frame">
+    <div id="app">
+      <!-- <div id="nav">
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> -->
-    <!-- </div> -->
-    <router-view />
-    
+      <!-- </div> -->
+      <router-view />
+
+    </div>
   </div>
 </template>
 
 
 
-<style src="./styles.css">
-
-</style>
+<style src="./styles.css"></style>

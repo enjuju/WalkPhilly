@@ -23,7 +23,8 @@ export default new Vuex.Store({
     isMenuButtonShowing: true,
     isMenuViewShowing: false,
     locations: [],
-    userPos: {},
+    userPos: {lat: 0,
+    lng: 0},
     textFilter: "",
     currentCategory: "",
     filteredMarkers: [],
@@ -53,7 +54,7 @@ export default new Vuex.Store({
           };
         })
         .filter(location => {
-          const range = 0.01;
+          const range = 0.2;
           const isLatNear =
             location.position.lat - state.userPos.lat <= range &&
             location.position.lat - state.userPos.lat >= -range;

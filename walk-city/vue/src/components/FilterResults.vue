@@ -47,7 +47,7 @@ export default {
 
 
 .filter-on {
-    position: fixed;
+    position: absolute;
     top: 1px;
     left: 5%;
     font-size: large;

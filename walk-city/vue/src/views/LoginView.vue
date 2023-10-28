@@ -69,17 +69,10 @@ export default {
 </script>
 
 <style scoped>
-#app {
-  display: grid;
-  font-weight: bold;
-  justify-content: center;
-  padding: 20px;
-}
-
 #login {
   background-image: url("../assets/philadelphia-aerial-view.jpg") !important;
   background-size: cover;
-  height: 100vh;
+  height: 100%;
   background-repeat: no-repeat;
 }
 
@@ -97,7 +90,7 @@ h1 {
 img {
   width: 240px;
   position: relative;
-  left: 21vw
+  left: 23%
 }
 
 .user-credentials {

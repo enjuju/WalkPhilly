@@ -29,6 +29,7 @@ export default {
 </script>
 <style scoped>
 .dropdown-container {
+  position: relative;
   width: 80%;
   margin: 0 auto;
   border-radius: 10px;
